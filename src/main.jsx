@@ -7,11 +7,30 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { root, Root } from 'postcss';
+import Must from './Must/Must';
+import ErrorPage from './Must/ErrorPage/ErrorPage';
+import Home from './Home/Home';
+import DashBoard from './Must/DashBoard/DashBoard';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Must></Must>,
+    errorElement : <ErrorPage></ErrorPage>,
+    children : [
+      {
+        path : '/',
+        element : <Home></Home>
+      },
+      {
+        path : '/dashboard',
+        element : <DashBoard></DashBoard>
+      }
+
+    ]
+    
+    ,
   },
 ]);
 
